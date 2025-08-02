@@ -102,6 +102,27 @@
         }
     </style>
 </head>
+{% if cleaned %}
+    <button id="copy-btn"
+            style="position: fixed; left: 0; right: 0; bottom: 0; width: 100vw; background: #222; color: #fff; font-size: 1.15em; padding: 1em 0; border: none; border-radius: 0; box-shadow: 0 -2px 8px rgba(0,0,0,0.07); z-index: 10; cursor: pointer;">
+        📋 Copy Clean URL
+    </button>
+    <script>
+        const btn = document.getElementById('copy-btn');
+        btn.addEventListener('click', function() {
+            // Find the cleaned URL input field
+            const cleanedInput = document.querySelector('.cleaned-url input[type="text"]');
+            if (cleanedInput) {
+                cleanedInput.select();
+                cleanedInput.setSelectionRange(0, 99999); // For mobile devices
+                document.execCommand('copy');
+                btn.textContent = "✅ Copied!";
+                setTimeout(() => { btn.textContent = "📋 Copy Clean URL"; }, 1600);
+            }
+        });
+    </script>
+{% endif %}
+
 <body>
     <!-- Title bar with ghost emoji and site name -->
     <div class="titlebar">
