@@ -1,0 +1,28 @@
+<body>
+	<div style="display: flex; align-items: center; background: #222; color: #fff; padding: 0.8em 1em; border-radius: 8px; margin-bottom: 2em;">
+        <span style="font-size: 2em; margin-right: 0.7em;">👻</span>
+        <span style="font-size: 1.5em; letter-spacing: 1px; font-weight: bold;">Ghostlinkz</span>
+    </div>
+
+    <h2>Clean Your URLs</h2>
+    <form method="POST">
+        <input type="text" name="url" value="{{ input_url }}" placeholder="Paste a messy URL here" required>
+        <br>
+        <button type="submit">Clean URL</button>
+    </form>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    {% if cleaned %}
+        <div class="cleaned-url"><b>Clean URL:</b>
+            <br>
+            <input type="text" value="{{ cleaned }}" style="width:100%" onclick="this.select();">
+        </div>
+    {% endif %}
+    {% if removed %}
+        <div class="removed">
+            Removed parameters: {{ removed|join(', ') }}
+        </div>
+    {% endif %}
+</body>
+
